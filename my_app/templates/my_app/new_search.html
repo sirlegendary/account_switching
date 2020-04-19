@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% elif offer_list %}
+        {{ offer_list }}
+        <h2 style="text-align: left">{{ monthly_income }}</h2>
+        <h2 style="text-align: left">{{ direct_debits }}</h2>
+        <h2 style="text-align: left">{{ money_saved }}</h2>
+    {% else %}
+        <p>No Deals matching your criteria found.</p>
+    {% endif %}
+
+{% endblock content %}
