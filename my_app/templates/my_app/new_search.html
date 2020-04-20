@@ -19,27 +19,22 @@
             </tr>
 
         {% for offer in offer_list %}
-        
-            {{ offer }}
-            <!-- <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><a href="http://github.com/" target="_blank">Click here to Go to deal.</a></td>
-                <td></td>
-                <td></td>
-            </tr> -->
-           
+            {% for key in offer %}
+                <tr>
+                    <td>{{ offer.bank }}</td>
+                    <td>{{ offer.switch_bonus }}</td>
+                    <td>{{ offer.referral }}</td>
+                    <td>{{ offer.min_mthly_pay_in }}</td>
+                    <td>{{ offer.req_dd }}</td>
+                    <td>{{ offer.extra_perks }}</td>
+                    <td><a href="{{ offer.offer_url }}" target="_blank">Click here to Go to deal.</a></td>
+                    <td>{{ offer.start_date }}</td>
+                    <td>{{ offer.end_date }}</td>
+                </tr>
+            ß{% endfor %}
         {% endfor %}
         </table>
         
-    
-        <!-- <h2 style="text-align: left">{{ monthly_income }}</h2>
-        <h2 style="text-align: left">{{ direct_debits }}</h2>
-        <h2 style="text-align: left">{{ money_saved }}</h2> -->
     {% else %}
         <p>No Deals matching your criteria found.</p>
     {% endif %}

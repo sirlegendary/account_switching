@@ -24,7 +24,7 @@ def new_search(request):
         for a in Offer.objects.filter(min_mthly_pay_in__lte=monthly_income,req_dd__lte=direct_debits):
             abc = a.bank
             t = {
-                'bank':abc,
+                'bank':a.bank,
                 'switch_bonus':a.switch_bonus,
                 'referral':a.referral,
                 'min_mthly_pay_in':a.min_mthly_pay_in,
@@ -36,6 +36,12 @@ def new_search(request):
             }
             offer_list.append(t)
             print (f"URL: {a.offer_url} and Start Date: {a.start_date} Bank: {abc}")
+
+        for offer in offer_list:
+            print(offer)
+            for key in offer:
+                print(offer['offer_url'])
+                # print("{}: {}".format(key, offer[key]))
 
 
         stuff_for_frontend = {
