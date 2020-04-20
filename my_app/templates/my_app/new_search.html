@@ -3,9 +3,12 @@
 {% block content %}
 
     {% if error_message %}
-        <p><strong>{{ error_message }}</strong></p>
+        <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            <strong>Error!</strong> {{ error_message }}
+        </div>
     {% elif offer_list %}
-        <table class="tg">
+        <table class="offer_table">
             <tr>
                 <th class="">Bank</th>
                 <th>Switch Bonus</th>
@@ -17,9 +20,8 @@
                 <th>Deal Start Date</th>
                 <th>Deal End Date</th>
             </tr>
-
-        {% for offer in offer_list %}
-            {% for key in offer %}
+            
+            {% for offer in offer_list %}  
                 <tr>
                     <td>{{ offer.bank }}</td>
                     <td>{{ offer.switch_bonus }}</td>
@@ -31,12 +33,15 @@
                     <td>{{ offer.start_date }}</td>
                     <td>{{ offer.end_date }}</td>
                 </tr>
-            ß{% endfor %}
-        {% endfor %}
+            {% endfor %}
+            
         </table>
         
     {% else %}
-        <p>No Deals matching your criteria found.</p>
+        <div class="info">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            <strong>Sorry,</strong> No Deals matching your criteria found.
+        </div>
     {% endif %}
 
 {% endblock content %}

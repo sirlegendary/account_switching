@@ -1,7 +1,6 @@
 import json
-import re
-from django.shortcuts import get_object_or_404, render
-from django.views import generic
+import datetime
+from django.shortcuts import render
 
 
 from my_app.models import Bank, Offer
@@ -16,13 +15,14 @@ def new_search(request):
     money_saved = request.POST.get('money_saved')
     
     
-    if monthly_income != "" and direct_debits != "" and money_saved != "":
+    if monthly_income != "" and direct_debits != "" and money_saved != "" and monthly_income != None and direct_debits != None and money_saved != None:
 
         offer_filtered = Offer.objects.filter(min_mthly_pay_in__lte=monthly_income,req_dd__lte=direct_debits) 
 
         offer_list = []
         for a in Offer.objects.filter(min_mthly_pay_in__lte=monthly_income,req_dd__lte=direct_debits):
-            abc = a.bank
+            formatted_start_date = datetime.date.strftime(a.start_date, "%m/%d/%Y")
+            formatted_end_date = datetime.date.strftime(a.end_date, "%m/%d/%Y")
             t = {
                 'bank':a.bank,
                 'switch_bonus':a.switch_bonus,
@@ -31,18 +31,15 @@ def new_search(request):
                 'req_dd':a.req_dd,             
                 'extra_perks':a.extra_perks,         
                 'offer_url':a.offer_url,           
-                'start_date':a.start_date,       
-                'end_date':a.end_date,           
+                'start_date':formatted_start_date,       
+                'end_date':formatted_end_date,           
             }
             offer_list.append(t)
-            print (f"URL: {a.offer_url} and Start Date: {a.start_date} Bank: {abc}")
+            # print (f"URL: {a.offer_url} and Start Date: {a.start_date} Bank: {a.bank}")
 
-        for offer in offer_list:
-            print(offer)
-            for key in offer:
-                print(offer['offer_url'])
-                # print("{}: {}".format(key, offer[key]))
-
+        # for offer in offer_list:
+        #     print(offer['offer_url'])
+            
 
         stuff_for_frontend = {
             'monthly_income': monthly_income,
@@ -56,3 +53,4 @@ def new_search(request):
             'error_message': "You have to fill out all fields.",
         }
         return render(request, 'my_app/new_search.html', stuff_for_frontend)
+    
