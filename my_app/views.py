@@ -1,7 +1,10 @@
-from django.shortcuts import render
+import json
+import re
+from django.shortcuts import get_object_or_404, render
 from django.views import generic
 
-from .models import Bank, Offer
+
+from my_app.models import Bank, Offer
 
 def home(request):
     return render(request, 'base.html')
@@ -15,11 +18,25 @@ def new_search(request):
     
     if monthly_income != "" and direct_debits != "" and money_saved != "":
 
-        # offer_list = Offer.objects.filter(min_mthly_pay_in__lte=monthly_income,req_dd__lte=direct_debits) 
+        offer_filtered = Offer.objects.filter(min_mthly_pay_in__lte=monthly_income,req_dd__lte=direct_debits) 
 
-        offer_list = Offer.objects.all()
+        offer_list = []
+        for a in Offer.objects.filter(min_mthly_pay_in__lte=monthly_income,req_dd__lte=direct_debits):
+            abc = a.bank
+            t = {
+                'bank':abc,
+                'switch_bonus':a.switch_bonus,
+                'referral':a.referral,
+                'min_mthly_pay_in':a.min_mthly_pay_in,
+                'req_dd':a.req_dd,             
+                'extra_perks':a.extra_perks,         
+                'offer_url':a.offer_url,           
+                'start_date':a.start_date,       
+                'end_date':a.end_date,           
+            }
+            offer_list.append(t)
+            print (f"URL: {a.offer_url} and Start Date: {a.start_date} Bank: {abc}")
 
-        print(list(offer_list))
 
         stuff_for_frontend = {
             'monthly_income': monthly_income,

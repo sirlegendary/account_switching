@@ -5,10 +5,41 @@
     {% if error_message %}
         <p><strong>{{ error_message }}</strong></p>
     {% elif offer_list %}
-        {{ offer_list }}
-        <h2 style="text-align: left">{{ monthly_income }}</h2>
+        <table class="tg">
+            <tr>
+                <th class="">Bank</th>
+                <th>Switch Bonus</th>
+                <th>Referral</th>
+                <th>Minimum Monthly Pay In</th>
+                <th>Minimum Direct Debits</th>
+                <th>Extra Perks</th>
+                <th>Offer Website</th>
+                <th>Deal Start Date</th>
+                <th>Deal End Date</th>
+            </tr>
+
+        {% for offer in offer_list %}
+        
+            {{ offer }}
+            <!-- <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="http://github.com/" target="_blank">Click here to Go to deal.</a></td>
+                <td></td>
+                <td></td>
+            </tr> -->
+           
+        {% endfor %}
+        </table>
+        
+    
+        <!-- <h2 style="text-align: left">{{ monthly_income }}</h2>
         <h2 style="text-align: left">{{ direct_debits }}</h2>
-        <h2 style="text-align: left">{{ money_saved }}</h2>
+        <h2 style="text-align: left">{{ money_saved }}</h2> -->
     {% else %}
         <p>No Deals matching your criteria found.</p>
     {% endif %}
