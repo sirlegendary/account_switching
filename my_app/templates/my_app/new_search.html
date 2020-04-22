@@ -10,27 +10,19 @@
     {% elif offer_list %}
         <table class="offer_table">
             <tr>
-                <th class="">Bank</th>
-                <th>Switch Bonus</th>
-                <th>Referral</th>
-                <th>Minimum Monthly Pay In</th>
-                <th>Minimum Direct Debits</th>
-                <th>Extra Perks</th>
-                <th>Offer Website</th>
-                <th>Deal Start Date</th>
+                <th>Bank</th>
+                <th>Joining Bonus</th>
+                <th>Monthly Bonus</th>
+                <th>Monthly Interest in &percnt;</th>
                 <th>Deal End Date</th>
             </tr>
             
             {% for offer in offer_list %}  
                 <tr>
-                    <td>{{ offer.bank }}</td>
-                    <td>{{ offer.switch_bonus }}</td>
-                    <td>{{ offer.referral }}</td>
-                    <td>{{ offer.min_mthly_pay_in }}</td>
-                    <td>{{ offer.req_dd }}</td>
-                    <td>{{ offer.extra_perks }}</td>
-                    <td><a href="{{ offer.offer_url }}" target="_blank">Click here to Go to deal.</a></td>
-                    <td>{{ offer.start_date }}</td>
+                    <td><a href="{% url 'my_app:detail' offer.id %}">{{ offer.bank }}</a></td>
+                    <td>&pound;{{ offer.switch_bonus }}</td>
+                    <td>&pound;{{ offer.monthly_bonus }}</td>
+                    <td>{{ offer.monthly_interest }}</td>
                     <td>{{ offer.end_date }}</td>
                 </tr>
             {% endfor %}
