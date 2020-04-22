@@ -36,15 +36,15 @@
         {% csrf_token %}
         <div class="row">
             <div class="input-field col s4">
-                <input type="number" name="monthly_income" placeholder="£" class="validate">
+                <input type="number" name="monthly_income" placeholder="£" value="{{ monthly_income }}" class="validate">
                 <label for="monthly_income">Potential monthly pay in £</label>
             </div>
             <div class="input-field col s4">
-                <input placeholder="Monthly Direct Debits" name="direct_debits" type="number" class="validate">
+                <input placeholder="Monthly Direct Debits" name="direct_debits" type="number" value="{{ direct_debits }}" class="validate">
                 <label for="direct_debits">Number of current direct debits </label>
             </div>
             <div class="input-field col s4">
-                <input placeholder="£" name="money_saved" type="number" class="validate">
+                <input placeholder="£" name="money_saved" type="number" value="{{ money_saved }}" class="validate">
                 <label for="money_saved">Money "saved" in the account £</label>
             </div>
         </div>

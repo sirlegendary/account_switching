@@ -29,21 +29,15 @@
 
             {% include "my_app/search_form.html" %}
 
-            {% if offer_detail %}
 
-                <h1>HELLLLLLOOOOO</h1>
-                
-                {% block offer_detail %}
+            {% block content %}
 
-                {% endblock offer_detail %}
+            {% endblock content %}
 
-            {% else %}
+            {% block offer_detail %}
 
-                {% block content %}
+            {% endblock offer_detail %}
 
-                {% endblock content %}
-
-            {% endif %}
                 
                 
 

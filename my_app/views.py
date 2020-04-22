@@ -41,6 +41,9 @@ def new_search(request):
 
         stuff_for_frontend = {
             'offer_list': offer_list,
+            'monthly_income':monthly_income,
+            'direct_debits':direct_debits,
+            'money_saved':money_saved,
         }
         return render(request, 'my_app/new_search.html', stuff_for_frontend)
     else:
