@@ -2,7 +2,6 @@ import json
 import datetime
 from django.utils import timezone
 from django.shortcuts import render
-from django.views import generic
 
 
 from my_app.models import Bank, Offer
@@ -52,9 +51,6 @@ def new_search(request):
         }
         return render(request, 'my_app/new_search.html', stuff_for_frontend)
 
-class DetailView(generic.DetailView):
-    model = Offer
-    template_name = 'my_app/detail.html'
 
                 # 'id':a.id,  
                 # 'bank':a.bank,

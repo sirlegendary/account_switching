@@ -8,27 +8,28 @@
             <strong>Error!</strong> {{ error_message }}
         </div>
     {% elif offer_list %}
-
-        <table class="offer_table">
-            <tr>
-                <th>Bank</th>
-                <th>Joining Bonus</th>
-                <th>Monthly Bonus</th>
-                <th>Monthly Interest in &percnt;</th>
-                <th>Deal End Date</th>
-            </tr>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Expand ALL</button>
+    <div class="accordion" id="accordionExample">
+        {% for offer in offer_list %}  
+        
+            <div class="card">
+                <div class="card-header" id="h{{ offer.id }}">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#d{{ offer.id }}" aria-expanded="false" aria-controls="d{{ offer.id }}">
+                            {{ offer.bank }}
+                        </button>
+                    </h2>
+                </div>
             
-            {% for offer in offer_list %}  
-                <tr>
-                    <td><a href="{% url 'my_app:detail' offer.id %}">{{ offer.bank }}</a></td>
-                    <td>&pound;{{ offer.switch_bonus }}</td>
-                    <td>&pound;{{ offer.monthly_bonus }}</td>
-                    <td>{{ offer.monthly_interest }}</td>
-                    <td>{{ offer.end_date }}</td>
-                </tr>
-            {% endfor %}
+                <div id="d{{ offer.id }}" class="collapse multi-collapse" aria-labelledby="h{{ offer.id }}" data-parent="#accordionExample">
+                    <div class="card-body">
+                        {{ offer.bank }}
+                    </div>
+                </div>
+            </div>
             
-        </table>
+        {% endfor %}
+    </div>
         
     {% else %}
         <div class="info">
@@ -36,5 +37,7 @@
             <strong>Sorry,</strong> No Deals matching your criteria found.
         </div>
     {% endif %}
+
+    
 
 {% endblock content %}
