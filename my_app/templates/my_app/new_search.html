@@ -8,8 +8,9 @@
             <strong>Error!</strong> {{ error_message }}
         </div>
     {% elif offer_list %}
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Expand ALL</button>
+    
     <div class="accordion" id="accordionExample">
+        
         {% for offer in offer_list %}  
         
             <div class="card">
