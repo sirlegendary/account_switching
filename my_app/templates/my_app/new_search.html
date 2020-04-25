@@ -14,12 +14,22 @@
         {% for offer in offer_list %}  
         
             <div class="card">
-                <div class="card-header" id="h{{ offer.id }}">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#d{{ offer.id }}" aria-expanded="false" aria-controls="d{{ offer.id }}">
-                            {{ offer.bank }}
-                        </button>
-                    </h2>
+                
+                <div class="card-header" id="h{{ offer.id }}" role="tab">
+                    <h5 class="panel-title collapsed" data-toggle="collapse" data-parent="#accordionExample" href="#d{{ offer.id }}" aria-expanded="false" aria-controls="d{{ offer.id }}">
+                        <div class="row">
+                            <div class="col-md-2 mb-3">
+                                <!-- <i class="fa fa-fw fa-chevron-down"></i>
+                                <i class="fa fa-fw fa-chevron-right"></i>   -->
+                                    Bank: {{ offer.bank }}
+                            </div>
+                            <div class="col-md-2 mb-3">Offer Tittle: {{ offer.tittle}} </div>
+                            <div class="col-md-2 mb-3">Joining Bonus: &pound;{{ offer.switch_bonus}}</div>
+                            <div class="col-md-2 mb-3">End Date: {{ offer.end_date }}</div>
+                            <div class="col-md-2 mb-3"><a href="{{ offer.offer_url}}" target="_blank">Visit Website</a></div>
+                            <div class="col-md-2 mb-3">Referall</div>
+                        </div>
+                    </h5>
                 </div>
             
                 <div id="d{{ offer.id }}" class="collapse multi-collapse" aria-labelledby="h{{ offer.id }}" data-parent="#accordionExample">
@@ -27,6 +37,7 @@
                         {{ offer.bank }}
                     </div>
                 </div>
+
             </div>
             
         {% endfor %}

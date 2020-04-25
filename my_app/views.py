@@ -30,10 +30,12 @@ def new_search(request):
             t = {
                 'id':a.id,
                 'bank':a.bank,
+                'tittle':a.offer_title,
                 'switch_bonus':a.switch_bonus,
                 'monthly_bonus':a.monthly_bonus,
                 'monthly_interest':a.monthly_interest,     
-                'end_date':formatted_end_date,           
+                'end_date':formatted_end_date,   
+                'offer_url':a.offer_url,       
             }
             offer_list.append(t)
             # print (f"URL: {a.offer_url} and Start Date: {a.start_date} Bank: {a.bank}")

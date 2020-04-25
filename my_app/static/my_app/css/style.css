@@ -27,3 +27,28 @@ body {
 .closebtn:hover {
     color: black;
 }
+
+
+
+.panel-title.collapsed .fa-chevron-down,
+.panel-title .fa-chevron-right {
+  display: none;
+}
+
+.panel-title.collapsed .fa-chevron-right,
+.panel-title .fa-chevron-down {
+  display: inline-block;
+}
+
+.panel-title {
+    cursor: pointer;
+}
+
+i.fa {
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.collapsed ~ .panel-body {
+  padding: 0;
+}
