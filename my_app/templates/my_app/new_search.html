@@ -19,15 +19,15 @@
                     <h5 class="panel-title collapsed" data-toggle="collapse" data-parent="#accordionExample" href="#d{{ offer.id }}" aria-expanded="false" aria-controls="d{{ offer.id }}">
                         <div class="row">
                             <div class="col-md-2 mb-3">
-                                <!-- <i class="fa fa-fw fa-chevron-down"></i>
-                                <i class="fa fa-fw fa-chevron-right"></i>   -->
+                                <i class="fa fa-fw fa-chevron-down"></i>
+                                <i class="fa fa-fw fa-chevron-right"></i>  
                                     Bank: {{ offer.bank }}
                             </div>
                             <div class="col-md-2 mb-3">Offer Tittle: {{ offer.tittle}} </div>
                             <div class="col-md-2 mb-3">Joining Bonus: &pound;{{ offer.switch_bonus}}</div>
                             <div class="col-md-2 mb-3">End Date: {{ offer.end_date }}</div>
                             <div class="col-md-2 mb-3"><a href="{{ offer.offer_url}}" target="_blank">Visit Website</a></div>
-                            <div class="col-md-2 mb-3">Referall</div>
+                            <div class="col-md-2 mb-3">Referall {{ offer.referral}}</div>
                         </div>
                     </h5>
                 </div>

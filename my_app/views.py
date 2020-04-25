@@ -27,15 +27,26 @@ def new_search(request):
         offer_list = []
         for a in Offer.objects.filter(min_mthly_pay_in__lte=monthly_income,req_dd__lte=direct_debits,end_date__gte=today).order_by('end_date'):
             formatted_end_date = datetime.date.strftime(a.end_date, "%d/%m/%Y")
+            formatted_start_date = datetime.date.strftime(a.start_date, "%d/%m/%Y")
             t = {
                 'id':a.id,
                 'bank':a.bank,
-                'tittle':a.offer_title,
+                'offer_title':a.offer_title,
                 'switch_bonus':a.switch_bonus,
+                'referral':a.referral,
+                'min_mthly_pay_in':a.min_mthly_pay_in,
+                'req_dd':a.req_dd,
+                'extra_perks':a.extra_perks,
+                'fees':a.fees,
+                'fees_comment':a.fees_comment,
                 'monthly_bonus':a.monthly_bonus,
-                'monthly_interest':a.monthly_interest,     
-                'end_date':formatted_end_date,   
-                'offer_url':a.offer_url,       
+                'monthly_bonus_cmt':a.monthly_bonus_cmt,
+                'instructions':a.instructions,
+                'monthly_interest':a.monthly_interest,
+                'terms':a.terms,
+                'offer_url':a.offer_url,
+                'start_date':formatted_start_date,
+                'end_date':formatted_end_date,     
             }
             offer_list.append(t)
             # print (f"URL: {a.offer_url} and Start Date: {a.start_date} Bank: {a.bank}")
