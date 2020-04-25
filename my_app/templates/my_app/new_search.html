@@ -18,23 +18,41 @@
                 <div class="card-header" id="h{{ offer.id }}" role="tab">
                     <h5 class="panel-title collapsed" data-toggle="collapse" data-parent="#accordionExample" href="#d{{ offer.id }}" aria-expanded="false" aria-controls="d{{ offer.id }}">
                         <div class="row">
-                            <div class="col-md-2 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <i class="fa fa-fw fa-chevron-down"></i>
                                 <i class="fa fa-fw fa-chevron-right"></i>  
                                     Bank: {{ offer.bank }}
                             </div>
-                            <div class="col-md-2 mb-3">Offer Tittle: {{ offer.tittle}} </div>
-                            <div class="col-md-2 mb-3">Joining Bonus: &pound;{{ offer.switch_bonus}}</div>
-                            <div class="col-md-2 mb-3">End Date: {{ offer.end_date }}</div>
-                            <div class="col-md-2 mb-3"><a href="{{ offer.offer_url}}" target="_blank">Visit Website</a></div>
-                            <div class="col-md-2 mb-3">Referall {{ offer.referral}}</div>
+                            <!-- <div class="col-md-2 mb-3">Offer Tittle: {{ offer.tittle}} </div> -->
+                            <div class="col-md-3 mb-3">Joining Bonus: &pound;{{ offer.switch_bonus}}</div>
+                            <div class="col-md-3 mb-3">End Date: {{ offer.end_date }}</div>
+                            <div class="col-md-3 mb-3"><a href="{{ offer.offer_url}}" target="_blank">Visit Website</a></div>
+                            <!-- <div class="col-md-2 mb-3">Referall {{ offer.referral}}</div> -->
                         </div>
                     </h5>
                 </div>
             
                 <div id="d{{ offer.id }}" class="collapse multi-collapse" aria-labelledby="h{{ offer.id }}" data-parent="#accordionExample">
                     <div class="card-body">
-                        {{ offer.bank }}
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-3"><strong>Monthly Bonus:</strong> &pound;{{ offer.monthly_bonus }}</div>
+                            <div class="col-md-4 mb-3"><strong>Monthly Interest:</strong> {{ offer.monthly_interest }}&percnt;</div>
+                            <div class="col-md-4 mb-3"><strong>Comments:</strong> {{ offer.monthly_bonus_cmt }}</div>
+                        </div>
+
+                        <div class="row">
+                            <!-- <strong>Extra Perks:</strong> {{ offer.extra_perks }} -->
+                            <div class="col-md-4 mb-3"><strong>Extra Perks:</strong> {{ offer.extra_perks }}</div>
+                            <div class="col-md-4 mb-3"><strong>Fees:</strong> {{ offer.extra_perks }}</div>
+                            <div class="col-md-4 mb-3"><strong>Comments:</strong> {{ offer.fees_comment }}</div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3"><strong>Instructions:</strong><p>{{ offer.instructions }}</p></div>
+                            <div class="col-md-6 mb-3"><strong>Terms</strong><p>{{ offer.terms }}</p></div>
+                        </div>
+
                     </div>
                 </div>
 
